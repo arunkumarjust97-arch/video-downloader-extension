@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader Pro</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Professional Clean Header -->
+        <header class="app-header">
+            <div class="brand-group">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <div class="brand-title">
+                        <span>Video Downloader</span>
+                        <span class="pro-badge">PRO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="open-settings-btn" class="header-icon-btn" title="Settings" aria-label="Settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </button>
+                <button id="refresh-btn" class="header-icon-btn" title="Rescan page" aria-label="Refresh">
+                    <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Segmented Tab Controller -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="detect">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+                <span>Detected Videos</span>
+            </button>
+            <button class="tab-btn" data-tab="download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span>URL Download</span>
+            </button>
+        </nav>
+
+        <!-- Detect Tab Content -->
+        <div id="detect-tab" class="tab-content active">
+            <!-- Quality Preference Setting Row -->
+            <div class="quality-preference-bar">
+                <div class="pref-info">
+                    <div class="pref-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="pref-text">
+                        <div class="pref-title">Auto Best Quality</div>
+                        <div class="pref-desc">Preselect highest resolution</div>
+                    </div>
+                </div>
+                <label class="switch" title="Automatically select and download highest quality">
+                    <input type="checkbox" id="auto-best-toggle" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <!-- Dynamic Status Bar -->
+            <div class="status-container">
+                <span class="status-dot"></span>
+                <span id="status" class="status">Scanning page for videos...</span>
+            </div>
+
+            <!-- Batch Download Action Banner -->
+            <div id="batch-action-bar" class="batch-action-bar" style="display: none;">
+                <button id="download-all-best-btn" class="batch-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <span>Download All (<span id="batch-count">0</span>) at Best Quality</span>
+                </button>
+            </div>
+
+            <!-- Detected Videos List -->
+            <div id="video-list" class="video-list"></div>
+        </div>
+
+        <!-- Direct URL Tab Content -->
+        <div id="download-tab" class="tab-content">
+            <div class="url-input-section">
+                <div class="input-card">
+                    <label class="field-label" for="video-url">Video Source URL</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                        <input type="text" id="video-url" placeholder="Paste direct MP4, WebM or M3U8 link..." class="url-input" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <label class="field-label" for="video-title">File Name (Optional)</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        <input type="text" id="video-title" placeholder="Custom filename for download" class="url-input" autocomplete="off">
+                    </div>
+                </div>
+
+                <button id="download-url-btn" class="btn primary-action-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download Media</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Toast Notification Box -->
+        <div id="toast" class="toast"></div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>

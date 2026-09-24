@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        video {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+        .instructions {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Downloader Extension Test Page</h1>
+    
+    <div class="instructions">
+        <h3>How to Test:</h3>
+        <ol>
+            <li>Load this extension in Chrome (chrome://extensions/ → Load unpacked)</li>
+            <li>Open this test.html file in Chrome</li>
+            <li>Click the extension icon in the toolbar</li>
+            <li>The popup should show the videos detected on this page</li>
+        </ol>
+    </div>
+
+    <div class="test-section" style="border: 2px solid #ffd700; background: #fffdf0;">
+        <h2 style="color: #b8860b;">★ Test: Wireframe Design (Vid 232323442-3434343.MP4)</h2>
+        <p>This video matches the exact user wireframe with <strong>2k</strong>, <strong>1080 P</strong>, <strong>720 P</strong>, and <strong>480 P</strong> download buttons, plus <strong>Copy URL</strong> and <strong>Open</strong>:</p>
+        <video controls width="640" title="Vid 232323442-3434343.MP4">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?q=2k" type="video/mp4" data-quality="2k" data-width="2560" data-height="1440">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?q=1080p" type="video/mp4" data-quality="1080p" data-width="1920" data-height="1080">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?q=720p" type="video/mp4" data-quality="720p" data-width="1280" data-height="720">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?q=480p" type="video/mp4" data-quality="480p" data-width="854" data-height="480">
+            Your browser does not support the video tag.
+        </video>
+        <p><em>Expected: Card with title "Vid 232323442-3434343.MP4", buttons [2k] [1080 P] [720 P] [480 P], and [Copy URL] [Open] below!</em></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 1: HTML5 Video with Absolute URL</h2>
+        <p>This video uses an absolute URL to a sample video:</p>
+        <video controls width="640" height="360">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p><em>Expected: Should show "360p" quality badge</em></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: YouTube Embed</h2>
+        <p>This is an embedded YouTube video:</p>
+        <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Direct Video Link</h2>
+        <p>Direct link to a video file:</p>
+        <a href="https://www.w3schools.com/html/mov_bbb.mp4" download>Download Sample Video</a>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 4: Multiple Source Elements</h2>
+        <p>Video with multiple source options:</p>
+        <video controls width="640">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" data-quality="360p">
+            <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg" data-quality="360p">
+            Your browser does not support the video tag.
+        </video>
+        <p><em>Expected: Should show "Multi-Quality" badge with "Select Quality" button</em></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 7: Multi-Quality Selection</h2>
+        <p>Video with different quality options:</p>
+        <video controls width="640">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" data-quality="720p" data-width="1280" data-height="720">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" data-quality="480p" data-width="854" data-height="480">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" data-quality="360p" data-width="640" data-height="360">
+            Your browser does not support the video tag.
+        </video>
+        <p><em>Expected: Should show quality selector with 720p, 480p, 360p options</em></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 6: Quality Label Examples</h2>
+        <p>The extension should show quality badges like:</p>
+        <ul>
+            <li><span style="background: #FF5722; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">4K</span> - 3840x2160 or higher</li>
+            <li><span style="background: #FF5722; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">1080p</span> - 1920x1080</li>
+            <li><span style="background: #FF5722; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">720p</span> - 1280x720</li>
+            <li><span style="background: #FF5722; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">480p</span> - 854x480</li>
+            <li><span style="background: #FF5722; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">360p</span> - 640x360</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 5: Video with Poster</h2>
+        <p>Video with poster image:</p>
+        <video controls width="640" poster="https://www.w3schools.com/html/movie.jpg">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 8: Automatic Best Quality Selection (Unordered Sources)</h2>
+        <p>This video provides sources in mixed order (360p first, then 1080p, then 480p):</p>
+        <video controls width="640">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?res=360" type="video/mp4" data-quality="360p" data-width="640" data-height="360">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?res=1080" type="video/mp4" data-quality="1080p" data-width="1920" data-height="1080">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?res=480" type="video/mp4" data-quality="480p" data-width="854" data-height="480">
+            Your browser does not support the video tag.
+        </video>
+        <p><em>Expected: Should automatically auto-select 1080p as the Best Quality with the "⚡ Download Best (1080p)" button</em></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 9: Tokenized CDN Video (Clean UI Display)</h2>
+        <p>Video with a long tokenized CDN URL containing keys, session tokens, and IP parameters:</p>
+        <video controls width="640">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4?key=H0o8NL3wskZvV2dIjesWnw,end=1790247612,ip=2401:4900:88de,speed=1.5,reftag=/disk3/1981000/1981450/sample_720.mp4" type="video/mp4" data-quality="720p">
+            Your browser does not support the video tag.
+        </video>
+        <p><em>Expected: Raw URL box is completely hidden from the popup HTML card; clean filename and "⚡ Download Best (720p)" button are displayed</em></p>
+    </div>
+
+    <div class="test-section">
+        <h2>Expected Results:</h2>
+        <ul>
+            <li>✓ Should detect the HTML5 video with absolute URL</li>
+            <li>✓ Should detect the YouTube embed (shows video page URL)</li>
+            <li>✓ Should detect the direct video link</li>
+            <li>✓ Should detect all source elements from the multi-source videos</li>
+            <li>✓ <strong>Auto-Best Quality:</strong> Automatically ranks and selects 1080p and 720p as the best qualities for multi-source videos</li>
+            <li>✓ Shows a 1-click <strong>"⚡ Download Best (Quality)"</strong> button for instant best-quality downloads</li>
+            <li>✓ Total: 5-6 video blocks should be detected</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Console:</h2>
+        <p>Open Chrome DevTools (F12) and check the console for:</p>
+        <ul>
+            <li>"Video Downloader content script loaded"</li>
+            <li>"Scanning for videos on: [URL]"</li>
+            <li>"Found videos: [array of video objects]"</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader - Settings</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <div class="settings-container">
+        
+        <!-- Header -->
+        <header class="settings-header">
+            <div class="brand-group">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Extension Settings</h1>
+                    <p>Customize quality preferences, file naming, and download behaviors.</p>
+                </div>
+            </div>
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span>Active & Synced</span>
+            </div>
+        </header>
+
+        <!-- Main Form Grid -->
+        <main class="settings-content">
+            
+            <!-- Section 1: Quality & Stream Detection -->
+            <section class="settings-card">
+                <div class="card-header">
+                    <div class="card-icon blue">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Quality & Stream Detection</h2>
+                        <p>Configure how media streams and resolutions are handled.</p>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <label class="setting-title" for="default-quality">Default Preferred Quality</label>
+                            <span class="setting-desc">Preferred resolution when auto-downloading or preselecting streams.</span>
+                        </div>
+                        <div class="setting-control">
+                            <select id="default-quality" class="custom-select">
+                                <option value="best" selected>Best Available (Recommended)</option>
+                                <option value="4k">4K Ultra HD (2160p)</option>
+                                <option value="2k">2K Quad HD (1440p)</option>
+                                <option value="1080p">Full HD (1080p)</option>
+                                <option value="720p">High Definition (720p)</option>
+                                <option value="480p">Standard Definition (480p)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <span class="setting-title">Auto-Select Best Quality</span>
+                            <span class="setting-desc">Automatically highlight the highest resolution button in the popup.</span>
+                        </div>
+                        <div class="setting-control">
+                            <label class="switch">
+                                <input type="checkbox" id="auto-best-toggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <span class="setting-title">Deep Scan Embedded Players</span>
+                            <span class="setting-desc">Scan nested iframes and HTML5 video containers for stream sources.</span>
+                        </div>
+                        <div class="setting-control">
+                            <label class="switch">
+                                <input type="checkbox" id="deep-scan-toggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Download & File Options -->
+            <section class="settings-card">
+                <div class="card-header">
+                    <div class="card-icon cyan">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>File & Download Preferences</h2>
+                        <p>Control file naming patterns and browser save dialogues.</p>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <span class="setting-title">Prompt Save As Location</span>
+                            <span class="setting-desc">Show browser file dialog before each video download starts.</span>
+                        </div>
+                        <div class="setting-control">
+                            <label class="switch">
+                                <input type="checkbox" id="prompt-save-toggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <label class="setting-title" for="naming-format">Filename Format</label>
+                            <span class="setting-desc">How downloaded video files are automatically named.</span>
+                        </div>
+                        <div class="setting-control">
+                            <select id="naming-format" class="custom-select">
+                                <option value="clean_res" selected>Title + Quality (e.g. Video_1080P.mp4)</option>
+                                <option value="clean_only">Clean Title Only (e.g. Video.mp4)</option>
+                                <option value="timestamp">Title + Timestamp (e.g. Video_20260924.mp4)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <label class="setting-title" for="conflict-action">Duplicate Filename Action</label>
+                            <span class="setting-desc">How to handle downloads when a file with the same name exists.</span>
+                        </div>
+                        <div class="setting-control">
+                            <select id="conflict-action" class="custom-select">
+                                <option value="uniquify" selected>Rename with number (e.g. video (1).mp4)</option>
+                                <option value="overwrite">Overwrite existing file</option>
+                                <option value="prompt">Prompt for new filename</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Interface & Notifications -->
+            <section class="settings-card">
+                <div class="card-header">
+                    <div class="card-icon emerald">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Notifications & UI Feedback</h2>
+                        <p>Configure feedback toasts and visual alerts.</p>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <div class="setting-row">
+                        <div class="setting-info">
+                            <span class="setting-title">In-App Toast Alerts</span>
+                            <span class="setting-desc">Display smooth non-blocking notifications when starting downloads or copying links.</span>
+                        </div>
+                        <div class="setting-control">
+                            <label class="switch">
+                                <input type="checkbox" id="toasts-toggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Data & Reset -->
+            <section class="settings-card danger-zone">
+                <div class="card-header">
+                    <div class="card-icon rose">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Data & Reset Options</h2>
+                        <p>Manage stored extension preferences and cached states.</p>
+                    </div>
+                </div>
+
+                <div class="danger-actions">
+                    <button id="reset-defaults-btn" class="secondary-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                        </svg>
+                        <span>Reset to Defaults</span>
+                    </button>
+                    <button id="clear-storage-btn" class="danger-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        <span>Clear All Stored Data</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Section 5: Contact & Support -->
+            <section class="settings-card" id="contact-section">
+                <div class="card-header">
+                    <div class="card-icon purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Contact & Support</h2>
+                        <p>Get in touch for direct support, reporting issues, or contributing to the project.</p>
+                    </div>
+                </div>
+
+                <div class="contact-channels">
+                    <a href="mailto:devteam.official@myyahoo.com?subject=Video%20Downloader%20Support%20%26%20Feedback" class="contact-channel-card" title="Email Support">
+                        <div class="channel-icon mail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <span class="channel-title">Email Support</span>
+                            <span class="channel-desc">Send feedback or report an issue</span>
+                        </div>
+                        <svg class="channel-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+
+                    <a href="https://github.com/arunkumarjust97-arch/video-downloader-extension" target="_blank" rel="noopener noreferrer" class="contact-channel-card" title="GitHub">
+                        <div class="channel-icon github">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </div>
+                        <div class="channel-info">
+                            <span class="channel-title">GitHub</span>
+                            <span class="channel-desc">View repository and release updates</span>
+                        </div>
+                        <svg class="channel-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Section 6: Copyright & Legal -->
+            <section class="settings-card copyright-card" id="copyright-section">
+                <div class="card-header">
+                    <div class="card-icon amber">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M14.83 14.83a4 4 0 1 1 0-5.66"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2>Copyright & Ownership</h2>
+                        <p>Official software licensing, developer attribution, and rights.</p>
+                    </div>
+                </div>
+
+                <div class="copyright-content-box">
+                    <div class="copyright-main-row">
+                        <div class="copyright-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M14.83 14.83a4 4 0 1 1 0-5.66"></path>
+                            </svg>
+                            <span>COPYRIGHT</span>
+                        </div>
+                        <div class="copyright-details">
+                            <div class="copyright-holder">&copy; 2026 Arun Kumar. All rights reserved.</div>
+                            <div class="copyright-sub">Designed, engineered & developed by Arun Kumar.</div>
+                        </div>
+                    </div>
+
+                    <div class="copyright-meta-grid">
+                        <div class="meta-item">
+                            <span class="meta-label">Software</span>
+                            <span class="meta-val">Video Downloader Pro</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Author</span>
+                            <span class="meta-val highlight">Arun Kumar</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">License</span>
+                            <span class="meta-val">MIT Open License</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Version</span>
+                            <span class="meta-val">1.0.0 Production</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Toast Notification Box -->
+        <div id="toast" class="toast"></div>
+
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+</html>

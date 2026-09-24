@@ -1,0 +1,24 @@
+{
+  "name": "video-downloader-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension for downloading videos from web pages",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arunkumarjust97-arch/video-downloader-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arunkumarjust97-arch/video-downloader-extension/issues"
+  },
+  "homepage": "https://github.com/arunkumarjust97-arch/video-downloader-extension#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chrome-extension",
+    "video-downloader",
+    "youtube",
+    "html5-video"
+  ],
+  "author": "Arun Kumar",
+  "license": "MIT"
+}

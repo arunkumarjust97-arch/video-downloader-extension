@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login - Redesigned UI</title>
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- Ambient Background Effects -->
+    <div class="ambient-background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="ambient-grid"></div>
+    </div>
+
+    <!-- Floating Theme Switcher Button -->
+    <div class="theme-switch-wrapper">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle theme">
+            <svg class="theme-toggle-icon" id="theme-icon" viewBox="0 0 24 24">
+                <!-- Moon icon (default in dark mode) -->
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span id="theme-toggle-text">Dark</span>
+        </button>
+    </div>
+
+    <!-- Main Auth Card Container -->
+    <div class="auth-wrapper">
+        <div class="auth-card" id="auth-card">
+            
+            <!-- Brand Header -->
+            <div class="brand-header">
+                <div class="brand-emblem">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h1 class="auth-title" id="card-title">Login</h1>
+                <p class="auth-subtitle" id="card-subtitle">Enter your credentials to access your account</p>
+            </div>
+
+            <!-- Tab Switcher (Login / Sign Up) -->
+            <div class="tab-switcher">
+                <button type="button" class="tab-btn active" id="tab-login">Login</button>
+                <button type="button" class="tab-btn" id="tab-signup">Sign Up</button>
+            </div>
+
+            <!-- Form -->
+            <form id="auth-form" novalidate>
+                
+                <!-- Full Name (Sign Up only) -->
+                <div class="form-group signup-only">
+                    <label class="form-label" for="fullname">Full Name</label>
+                    <div class="input-container">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <input type="text" id="fullname" class="form-input" placeholder="Type your full name" autocomplete="name">
+                    </div>
+                </div>
+
+                <!-- Username or Email -->
+                <div class="form-group">
+                    <label class="form-label" for="username">Username</label>
+                    <div class="input-container">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <input type="text" id="username" class="form-input" placeholder="Type your username" autocomplete="username" required>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <div class="input-container">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <input type="password" id="password" class="form-input" placeholder="Type your password" autocomplete="current-password" required>
+                        <button type="button" class="password-toggle-btn" id="password-toggle-btn" aria-label="Toggle password visibility">
+                            <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Confirm Password (Sign Up only) -->
+                <div class="form-group signup-only">
+                    <label class="form-label" for="confirm-password">Confirm Password</label>
+                    <div class="input-container">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <input type="password" id="confirm-password" class="form-input" placeholder="Confirm your password" autocomplete="new-password">
+                    </div>
+                </div>
+
+                <!-- Helper Row (Remember Me & Forgot Password) -->
+                <div class="form-options-row">
+                    <label class="remember-label">
+                        <input type="checkbox" id="remember-me" class="custom-checkbox">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#forgot" class="forgot-link login-only" id="forgot-password-link">Forgot password?</a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span class="btn-text" id="submit-btn-text">LOGIN</span>
+                    <span class="btn-spinner" id="btn-spinner"></span>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span class="auth-divider-text" id="divider-text">Or Sign Up Using</span>
+            </div>
+
+            <!-- Social Authentication Buttons -->
+            <div class="social-buttons-grid">
+                <!-- Facebook -->
+                <button type="button" class="social-btn facebook" title="Sign in with Facebook" aria-label="Sign in with Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </button>
+
+                <!-- Twitter / X -->
+                <button type="button" class="social-btn twitter" title="Sign in with Twitter / X" aria-label="Sign in with Twitter / X">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </button>
+
+                <!-- Google -->
+                <button type="button" class="social-btn google" title="Sign in with Google" aria-label="Sign in with Google">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+                        <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                    </svg>
+                </button>
+
+                <!-- GitHub -->
+                <button type="button" class="social-btn github" title="Sign in with GitHub" aria-label="Sign in with GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Card Footer Switch Prompt -->
+            <div class="auth-footer">
+                <span id="footer-text">Don't have an account?</span>
+                <a class="auth-footer-link" id="switch-mode-link">SIGN UP</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="login.js"></script>
+</body>
+</html>

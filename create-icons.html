@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Simple Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .icon-preview {
+            width: 128px;
+            height: 128px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+        .icon-preview svg {
+            width: 64px;
+            height: 64px;
+            fill: white;
+        }
+        .instructions {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Downloader Icon Generator</h1>
+    
+    <div class="icon-preview" id="icon128">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+        </svg>
+    </div>
+    
+    <div class="instructions">
+        <h2>How to add icons to your extension:</h2>
+        <ol>
+            <li>Right-click on the icon above and select "Save image as..."</li>
+            <li>Save it as <code>icon128.png</code> in the <code>icons/</code> folder</li>
+            <li>Resize the image to 48x48 pixels and save as <code>icon48.png</code></li>
+            <li>Resize the image to 16x16 pixels and save as <code>icon16.png</code></li>
+            <li>Alternatively, use online tools like:
+                <ul>
+                    <li><a href="https://www.favicon-generator.org/" target="_blank">Favicon Generator</a></li>
+                    <li><a href="https://canva.com/" target="_blank">Canva</a></li>
+                </ul>
+            </li>
+        </ol>
+        
+        <button onclick="window.open('https://www.favicon-generator.org/', '_blank')">Open Favicon Generator</button>
+        <button onclick="window.open('https://canva.com/', '_blank')">Open Canva</button>
+    </div>
+</body>
+</html>

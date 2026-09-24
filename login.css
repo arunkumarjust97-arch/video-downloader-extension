@@ -1,0 +1,764 @@
+/* ==========================================================================
+   Modern Redesigned Login Page - Design System & Styles
+   ========================================================================== */
+
+:root {
+    /* Color Palette - Vibrant Cyan to Purple / Magenta */
+    --primary-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 30%, #764ba2 65%, #f093fb 100%);
+    --primary-gradient-hover: linear-gradient(135deg, #00dbfc 0%, #3b9dfd 30%, #683fa0 65%, #ee81fb 100%);
+    --cyan-glow: rgba(0, 242, 254, 0.4);
+    --purple-glow: rgba(240, 147, 251, 0.4);
+    --blue-accent: #4facfe;
+    
+    /* Social Brand Colors */
+    --facebook-color: #1877f2;
+    --twitter-color: #1da1f2;
+    --google-color: #ea4335;
+    --github-color: #24292e;
+
+    /* Dark Theme Defaults */
+    --bg-body: #07090e;
+    --card-bg: rgba(18, 22, 36, 0.72);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --card-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(79, 172, 254, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(255, 255, 255, 0.12);
+    --input-border-focus: #4facfe;
+    --input-focus-ring: rgba(79, 172, 254, 0.25);
+    --divider-color: rgba(255, 255, 255, 0.1);
+    --social-bg: rgba(255, 255, 255, 0.06);
+    --social-border: rgba(255, 255, 255, 0.12);
+    --toggle-bg: rgba(255, 255, 255, 0.08);
+
+    /* Fonts & Radii */
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+    --bg-body: #f1f5f9;
+    --card-bg: rgba(255, 255, 255, 0.88);
+    --card-border: rgba(255, 255, 255, 0.8);
+    --card-shadow: 0 25px 60px -15px rgba(79, 172, 254, 0.2), 0 10px 30px rgba(0, 0, 0, 0.05);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --input-bg: rgba(248, 250, 252, 0.9);
+    --input-border: #cbd5e1;
+    --input-border-focus: #3b82f6;
+    --input-focus-ring: rgba(59, 130, 246, 0.2);
+    --divider-color: #e2e8f0;
+    --social-bg: #ffffff;
+    --social-border: #e2e8f0;
+    --toggle-bg: #e2e8f0;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+}
+
+/* ==========================================================================
+   Ambient Background Effects & Floating Orbs
+   ========================================================================== */
+.ambient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: floatOrb 18s ease-in-out infinite alternate;
+}
+
+[data-theme="light"] .orb {
+    opacity: 0.3;
+    filter: blur(70px);
+}
+
+.orb-1 {
+    width: 380px;
+    height: 380px;
+    top: -80px;
+    left: -80px;
+    background: radial-gradient(circle, #00f2fe 0%, #4facfe 100%);
+    animation-duration: 22s;
+}
+
+.orb-2 {
+    width: 420px;
+    height: 420px;
+    bottom: -120px;
+    right: -80px;
+    background: radial-gradient(circle, #f093fb 0%, #764ba2 100%);
+    animation-duration: 26s;
+    animation-delay: -5s;
+}
+
+.orb-3 {
+    width: 260px;
+    height: 260px;
+    top: 40%;
+    left: 60%;
+    background: radial-gradient(circle, #4facfe 0%, #00f2fe 100%);
+    opacity: 0.2;
+    animation-duration: 16s;
+    animation-delay: -8s;
+}
+
+@keyframes floatOrb {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -45px) scale(1.08);
+    }
+    100% {
+        transform: translate(-25px, 30px) scale(0.96);
+    }
+}
+
+/* Background subtle grid pattern */
+.ambient-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.35;
+}
+
+[data-theme="light"] .ambient-grid {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    opacity: 0.5;
+}
+
+/* ==========================================================================
+   Theme Switcher Button
+   ========================================================================== */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 16px;
+    right: 18px;
+    z-index: 20;
+}
+
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 11.5px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--blue-accent);
+    box-shadow: 0 6px 16px rgba(79, 172, 254, 0.22);
+}
+
+.theme-toggle-icon {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ==========================================================================
+   Main Auth Card Container - Compact Sizing
+   ========================================================================== */
+.auth-wrapper {
+    width: 100%;
+    max-width: 330px;
+    position: relative;
+    z-index: 10;
+}
+
+.auth-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    padding: 22px 20px 18px 20px;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top Subtle Gradient Border Highlight */
+.auth-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+}
+
+/* ==========================================================================
+   Brand & Header
+   ========================================================================== */
+.brand-header {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.brand-emblem {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 10px auto;
+    border-radius: 12px;
+    background: var(--primary-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 18px rgba(79, 172, 254, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    animation: pulseEmblem 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseEmblem {
+    0% { transform: scale(1); box-shadow: 0 6px 16px rgba(79, 172, 254, 0.35); }
+    100% { transform: scale(1.05); box-shadow: 0 10px 22px rgba(240, 147, 251, 0.45); }
+}
+
+.brand-emblem svg {
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+    stroke-width: 2.2;
+}
+
+.auth-title {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.auth-subtitle {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Tab Navigation (Login ⟷ Sign Up)
+   ========================================================================== */
+.tab-switcher {
+    display: flex;
+    background: var(--toggle-bg);
+    padding: 3px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    position: relative;
+    border: 1px solid var(--input-border);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 6px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.tab-btn.active {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .tab-btn.active {
+    background: #ffffff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-btn:hover:not(.active) {
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Form Fields & Input Styling
+   ========================================================================== */
+.form-group {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    width: 15px;
+    height: 15px;
+    color: var(--text-muted);
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px 34px 8px 36px;
+    background: var(--input-bg);
+    border: 1.2px solid var(--input-border);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 500;
+    transition: var(--transition);
+    outline: none;
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.form-input:focus {
+    border-color: var(--input-border-focus);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+[data-theme="light"] .form-input:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 3px var(--input-focus-ring);
+}
+
+.input-container:focus-within .input-icon {
+    color: var(--blue-accent);
+    transform: scale(1.08);
+}
+
+/* Password Toggle Eye Button */
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.password-toggle-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.password-toggle-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2;
+}
+
+/* Form Helper Row (Remember Me & Forgot Password) */
+.form-options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 11px;
+}
+
+.remember-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-checkbox {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--blue-accent);
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.forgot-link:hover {
+    color: var(--blue-accent);
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Primary Gradient Action Button ("LOGIN")
+   ========================================================================== */
+.submit-btn {
+    width: 100%;
+    padding: 9px 18px;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--primary-gradient);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 18px rgba(79, 172, 254, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Shimmer sweep effect on button */
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-25deg);
+    transition: 0.75s ease;
+}
+
+.submit-btn:hover::before {
+    left: 140%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(240, 147, 251, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Loading Spinner inside Button */
+.btn-spinner {
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+}
+
+.submit-btn.loading .btn-text {
+    opacity: 0.8;
+}
+
+.submit-btn.loading .btn-spinner {
+    display: inline-block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Divider ("Or Sign Up Using")
+   ========================================================================== */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 16px 0 12px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.auth-divider-text {
+    padding: 0 10px;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Social Login Buttons (Facebook, Twitter/X, Google, GitHub)
+   ========================================================================== */
+.social-buttons-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.social-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: var(--social-bg);
+    border: 1px solid var(--social-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-primary);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-decoration: none;
+}
+
+.social-btn svg {
+    width: 15px;
+    height: 15px;
+    transition: var(--transition);
+}
+
+.social-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Facebook */
+.social-btn.facebook:hover {
+    background: var(--facebook-color);
+    border-color: var(--facebook-color);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(24, 119, 242, 0.4);
+}
+
+/* Twitter / X */
+.social-btn.twitter:hover {
+    background: var(--twitter-color);
+    border-color: var(--twitter-color);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(29, 161, 242, 0.4);
+}
+
+/* Google */
+.social-btn.google:hover {
+    background: #ffffff;
+    border-color: #ea4335;
+    box-shadow: 0 6px 18px rgba(234, 67, 53, 0.3);
+}
+
+/* GitHub */
+.social-btn.github:hover {
+    background: var(--github-color);
+    border-color: var(--github-color);
+    color: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ==========================================================================
+   Card Footer (Switch Prompt)
+   ========================================================================== */
+.auth-footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.auth-footer-link {
+    color: var(--blue-accent);
+    font-weight: 700;
+    text-decoration: none;
+    margin-left: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.auth-footer-link:hover {
+    text-decoration: underline;
+    color: #f093fb;
+}
+
+/* ==========================================================================
+   Toast Notification Component
+   ========================================================================== */
+.toast-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.toast {
+    padding: 8px 14px;
+    border-radius: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(20px);
+    color: var(--text-primary);
+    font-size: 11.5px;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(16px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast.success {
+    border-color: #10b981;
+}
+
+.toast.success .toast-icon {
+    color: #10b981;
+}
+
+.toast.error {
+    border-color: #ef4444;
+}
+
+.toast.error .toast-icon {
+    color: #ef4444;
+}
+
+.toast-icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+/* Hidden / Conditional Elements */
+.signup-only {
+    display: none;
+}
+
+.auth-card.mode-signup .signup-only {
+    display: block;
+}
+
+.auth-card.mode-signup .login-only {
+    display: none;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .auth-card {
+        padding: 24px 20px 18px 20px;
+        border-radius: 18px;
+    }
+
+    .auth-title {
+        font-size: 19px;
+    }
+
+    .social-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
